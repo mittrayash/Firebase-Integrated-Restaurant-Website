@@ -9,6 +9,13 @@
 	border-bottom: 1px ridge;
 	min-height: 400px;
 }
+#signup{
+	top: -18px;
+	position: relative;
+}
+.spacing{
+	margin-bottom: 10px !important;
+}
 .row-footer{
 	background-color: #AfAfAf;
 	margin: 0px auto;
