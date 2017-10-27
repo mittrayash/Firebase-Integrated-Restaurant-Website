@@ -71,7 +71,6 @@ $(document).ready(function(){
             var uid = user.uid;
             var providerData = user.providerData;
 
-            console.log(displayName, email);
 
         } else {
             // User is signed out.
