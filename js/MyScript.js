@@ -26,6 +26,10 @@ $(document).ready(function(){
         });
 
         function writeUserData(fname, lname, username, email, phone){
+            if(username == ""){
+                exit(1);
+            }
+
             firebase.database().ref('users/' + username).set({
                 firstname: fname,
                 lastname: lname,
