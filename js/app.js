@@ -89,12 +89,11 @@ angular.module('confusionApp',[])
 
 
         $scope.sendFeedback = function(){
-            console.log($scope.feedback);
-            console.log($scope.feedback);
+
 ///////////////////////////////////////////////////////////////////////////
             function writeUserData($scope) { // Writes to firebase db
 
-                firebase.database().ref().child('users/' + $scope.feedback.firstname + $scope.feedback.lastname).set({
+                firebase.database().ref().child('reviews/' + $scope.feedback.firstname + $scope.feedback.lastname).set({
                     firstname: $scope.feedback.firstname,
                     lastname: $scope.feedback.lastname,
                     email: $scope.feedback.email,
