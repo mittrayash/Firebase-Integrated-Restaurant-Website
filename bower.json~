@@ -1,0 +1,30 @@
+{
+  "name": "conFusion",
+  "authors": [
+    "Nitesh Sharma <nbsharma@outlook.com>"
+  ],
+  "description": "WebSite for an awesome restaurent",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "confusion",
+    "fusion",
+    "restaurent"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "angular": "1.0"
+  }
+}
+
+
