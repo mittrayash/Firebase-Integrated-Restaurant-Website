@@ -87,9 +87,27 @@ angular.module('confusionApp',[])
 
     .controller('FeedbackController',['$scope', function($scope){
 
+
         $scope.sendFeedback = function(){
             console.log($scope.feedback);
+            console.log($scope.feedback);
+///////////////////////////////////////////////////////////////////////////
+            function writeUserData($scope) { // Writes to firebase db
 
+                firebase.database().ref().child('users/' + $scope.feedback.firstname + $scope.feedback.lastname).set({
+                    firstname: $scope.feedback.firstname,
+                    lastname: $scope.feedback.lastname,
+                    email: $scope.feedback.email,
+                    tel: $scope.feedback.tel.areaCode + $scope.feedback.tel.number,
+                    agree: $scope.feedback.agree,
+                    channel: $scope.feedback.mychannel,
+                    comments: "" + $scope.feedback.comments
+                });
+
+            }
+
+            document.getElementById("submit").onclick = writeUserData($scope);
+////////////////////////////////////////////////////////////////////////////
             if($scope.feedback.agree && 
                 ($scope.feedback.mychannel == "")){
                 $scope.invalidChannelSelection = true;

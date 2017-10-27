@@ -273,12 +273,12 @@
                     <div class="form-group" ng-class="{'has-error': invalidChannelSelection }">
                        <div class="checkbox col-sm-5 col-sm-offset-2">
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="approve" value="" ng-model="feedback.agree">
+                                <input type="checkbox" name="approve" id="approve" value="" ng-model="feedback.agree">
                                 <strong>May we contact you?</strong>
                             </label>
                         </div>
                         <div class="col-sm-3 col-sm-offset-1" ng-show="feedback.agree">
-                            <select class="form-control" ng-model="feedback.mychannel" ng-options="channel.value as channel.label for channel in channels">
+                            <select class="form-control" id="how" ng-model="feedback.mychannel" ng-options="channel.value as channel.label for channel in channels">
                                 <option value="">Tel. or Email?</option>
                             </select>
                             <span ng-show="invalidChannelSelection" class="help-block">Select an option</span>
@@ -292,7 +292,7 @@
                     </div> 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary" ng-disabled="feedbackForm.$invalid">Send Feedback</button>
+                            <button type="submit" id="submit" class="btn btn-primary" ng-disabled="feedbackForm.$invalid">Send Feedback</button>
                         </div>
                     </div>
                 </form>
@@ -374,5 +374,19 @@
                 $("#resvModal").modal('hide');
             });
     </script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCq8C4yEKR8oiyfOPJLjJiDLE7TIXKCEvo",
+            authDomain: "restaurant-firebase.firebaseapp.com",
+            databaseURL: "https://restaurant-firebase.firebaseio.com",
+            projectId: "restaurant-firebase",
+            storageBucket: "",
+            messagingSenderId: "394504783124"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="js/main1.js"></script>
 
 </body></html>
