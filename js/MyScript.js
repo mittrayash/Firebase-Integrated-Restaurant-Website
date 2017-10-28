@@ -31,10 +31,10 @@ $(document).ready(function(){
             }
 
             //Create custom directory address for db storage path
-            part1 = email.split("@")[0];
+            part1 = email.split("@")[0]; // part before @
             part2 = email.split("@")[1];
-            part21 = part2.split(".")[0];
-            part22 = part2.split(".")[1];
+            part21 = part2.split(".")[0]; // part after @ and before .
+            part22 = part2.split(".")[1]; // part after .
 
             firebase.database().ref('users/' + part1 + '~' + part21 + '~' + part22).set({
                 firstname: fname,
@@ -56,6 +56,7 @@ $(document).ready(function(){
         email = $("#logEmail").val();
         password = $("#logPass").val();
 
+        ref = firebase.database().ref();
         firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
             ref.child("users").child(authData.uid).set({
                 provider: authData.provider,
@@ -72,7 +73,7 @@ $(document).ready(function(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             // User is signed in.
-            ref = firebase.database().ref();
+
             var displayName = user.username;
             var email = user.email;
             var emailVerified = user.emailVerified;
@@ -80,7 +81,20 @@ $(document).ready(function(){
             var isAnonymous = user.isAnonymous;
             var uid = user.uid;
             var providerData = user.providerData;
-            console.log(user);
+
+            var part1 = user.email.split('@')[0];
+            var part2 = user.email.split('@')[1];
+            var part21 = part2.split('.')[0];
+            var part22 = part2.split('.')[1];
+
+            // DB unique userID generated as under
+            var db_ref = part1 +'~'+ part21 +'~'+ part22;
+
+            // Now querying data using this generated unique ID
+            var user = firebase.database().ref('users/' + db_ref);
+            user.on('value', function(snapshot) {
+                console.log(snapshot.val());
+            });
 
 
         } else {
