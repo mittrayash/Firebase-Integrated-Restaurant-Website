@@ -97,15 +97,21 @@ $(document).ready(function(){
             user.on('value', function(snapshot) {
                 console.log(snapshot.val());
 
-                $("#barr").css("background-color", "#245269")
+                $("#barr").css("background-color", "#245269");
                 $("#uname").text("Welcome " + snapshot.val().firstname);
-                $("#loginclick").hide()
+                $("#uname").show();
+                $("#loginclick").hide();
+                $("#logoutBtn").show();
             });
 
 
         } else {
             // User is signed out.
             // ...
+
+            $("#loginclick").show();
+            $("#uname").hide();
+            $("#logoutBtn").hide();
         }
     });
 
