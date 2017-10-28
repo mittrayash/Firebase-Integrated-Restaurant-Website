@@ -71,15 +71,21 @@ $(document).ready(function(){
         password = $("#logPass").val();
 
         ref = firebase.database().ref();
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-            ref.child("users").child(authData.uid).set({
-                provider: authData.provider,
-                name: userName
-            });
-            var errorMessage = error.message;
-            $("#ErorrMsg").show().text(errorMessage);
 
-        });
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(function(firebaseUser) {
+                $(function () {
+                    $('#loginModal').modal('toggle');
+                });
+
+
+            })
+            .catch(function(error) {
+                var errorMessage = error.message;
+                $("#ErorrMsg").show().text(errorMessage);
+
+            });
+
 
     });
 
@@ -112,11 +118,14 @@ $(document).ready(function(){
                 //Note that in manage users, Firebase provides same functionality to get current user and..
                 // we can set the attributes from there as well as soon as someone signs up and directly access the user
                 // from the provided code in manage users. However, here I will use the custom created db for users.
-                $("#barr").css("background-color", "#245269");
+
                 $("#uname").text("Welcome " + snapshot.val().firstname);
                 $("#uname").show();
+                $("#barr").show();
+                $("#barr").css("background-color", "#245269");
                 $("#loginclick").hide();
                 $("#logoutBtn").show();
+                $("#uname").css('visibility', 'visible', 100);
             });
 
 
@@ -127,7 +136,7 @@ $(document).ready(function(){
             // ...
 
             $("#loginclick").show();
-            $("#uname").hide();
+            $("#barr").hide();
             $("#logoutBtn").hide();
         }
     });
@@ -137,10 +146,11 @@ $(document).ready(function(){
     $("#logoutBtn").click(function(){
 
         firebase.auth().signOut().then(function() {
-            $("#loginclick").show();
-            $("#uname").hide();
+            $("#loginclick").css("display", "block", 100);
+            $("#barr").css('visibility', 'hidden', 101);
+
             $("#logoutBtn").hide();
-            console.log('Signed Out');
+            
         }, function(error) {
             console.error('Sign Out Error', error);
         });
