@@ -6,6 +6,17 @@
 	display: none;
 	color: red;
 }
+.navbar-brand{
+	margin-left: 20px !important;
+}
+#uname{
+	color: ghostwhite !important;
+}
+
+#logoutBtn{
+	margin-right: 20px;
+	margin-left: 30px;
+}
 .row-content{
 	margin: 0px auto;
 	padding: 50px 0px 50px 0px;

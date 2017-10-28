@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
 // Design & visibility
 
@@ -94,6 +96,10 @@ $(document).ready(function(){
             var user = firebase.database().ref('users/' + db_ref);
             user.on('value', function(snapshot) {
                 console.log(snapshot.val());
+
+                $("#barr").css("background-color", "#245269")
+                $("#uname").text("Welcome " + snapshot.val().firstname);
+                $("#loginclick").hide()
             });
 
 
