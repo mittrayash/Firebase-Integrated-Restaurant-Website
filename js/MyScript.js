@@ -150,7 +150,7 @@ $(document).ready(function(){
             $("#barr").css('visibility', 'hidden', 101);
 
             $("#logoutBtn").hide();
-            
+
         }, function(error) {
             console.error('Sign Out Error', error);
         });
