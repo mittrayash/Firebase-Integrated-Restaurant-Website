@@ -11,6 +11,11 @@ Find it live here: https://firebase-restaurant.herokuapp.com/
 - AngularJS
 - Firebase BaaS (NoSQL DB)
 
+## For Testing (User Authentication)
+  The following details can be used:   
+    Username: abc@abc.com  
+    Password: password  
+
 ## Here's what's going on:   
 
 > The following images shows the login panel which is powered by Firebase BaaS Database. A wrong input has been provided deliberately to show
